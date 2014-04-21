@@ -1,28 +1,25 @@
-﻿@{
+﻿@model GameRating.Models.Game
+@{
     ViewBag.Title = "Home Page";
 }
-
 
 
 <div class="jumbotron">
     <h1>Games</h1>
     
 </div>
-<!--
-You are free to copy and use this sample in accordance with the terms of the
-Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
--->
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    
+
     <script src="//www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
     <script type="text/javascript">
-       
 
-        google.load('search','1');
+
+        google.load('search', '1');
 
         function searchComplete(searcher) {
             // Check that we got results
@@ -63,26 +60,49 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
             imageSearch.setRestriction(google.search.ImageSearch.RESTRICT_IMAGESIZE,
                                        google.search.ImageSearch.IMAGESIZE_MEDIUM);
 
-            
+
             imageSearch.setSearchCompleteCallback(this, searchComplete, [imageSearch]);
 
-            
-            imageSearch.execute( "dark souls 2" + "box art");
+
+            imageSearch.execute("dark souls 2" + "box art");
         }
         google.setOnLoadCallback(OnLoad);
     </script>
+    <title>Rate The Game</title>
 </head>
-<body style="font-family: Arial;border: 0 none;">
-    <div id="content">Loading...</div>
-</body>
-</html>
-​
-<div class="row">
-    <div class="col-lg-12">
-        <h2>Rate The Game!</h2>
-        <img src="" alt="" />
-        <label id="Label1">Is this Game Good?</label>
-        <input id="Button2" type="button" value="No" />
-        <input id="Button1" type="button" value="Yes" />
-    </div>
+<body>
+<h2>Details</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.System)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.System)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+    </dl>
 </div>
+
+    </body>
+</html>
