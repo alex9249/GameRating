@@ -12,8 +12,9 @@ namespace GameRating.Controllers
         private GameDBContext db = new GameDBContext();
         public ActionResult Index()
         {
-
-            return View();
+            int id = 1;
+            Game game = db.Games.Find(id);
+            return View(game);
         }
 
         
