@@ -10,7 +10,7 @@ namespace GameRating.Controllers
     public class HomeController : Controller
     {
         private GameDBContext db = new GameDBContext();
-        public int staticID = 1;
+        public int staticID = IDHolder.ID;
          
         public ActionResult Index()
         {
