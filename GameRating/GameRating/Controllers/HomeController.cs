@@ -33,8 +33,6 @@ namespace GameRating.Controllers
            }
            else
                game = db.Games.Find(staticID);
-           game.Rating++;
-           db.SaveChanges();
            return View(game);
            
         }
@@ -56,6 +54,22 @@ namespace GameRating.Controllers
            return View(game);
        }
 
+        public ActionResult Downvote()
+        {
+            Game game = db.Games.Find(staticID + 1);
+            if (game != null)
+            {
+                staticID += 1;
+                game = db.Games.Find(staticID);
+                IDHolder.ID = staticID;
+
+            }
+            else
+                game = db.Games.Find(staticID);
+            game.Rating--;
+            db.SaveChanges();
+            return View(game);
+        }
         
     }
 }

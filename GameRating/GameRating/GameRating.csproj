@@ -228,6 +228,8 @@
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Home\Next.cshtml" />
+    <Content Include="Views\Home\Upvote.cshtml" />
+    <Content Include="Views\Home\Downvote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
