@@ -226,6 +226,7 @@
     <Content Include="Views\Games\Details.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Home\Next.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

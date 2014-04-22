@@ -12,17 +12,15 @@ namespace GameRating.Controllers
 {
     public class GamesController : Controller
     {
-        public Game gameTest = new Game();
+        
         private GameDBContext db = new GameDBContext();
-        public int i = 1;
+       
 
         
         // GET: /Games/
         public ActionResult Index()
         {
-            Game b = db.Games.Find(i);
-            
-           return View(b);
+            return View(db.Games.ToList());
         }
 
        
