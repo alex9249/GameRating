@@ -10,21 +10,28 @@ namespace GameRating.Controllers
     public class HomeController : Controller
     {
         private GameDBContext db = new GameDBContext();
-        public int id = 1;
+        public int staticID = 1;
          
         public ActionResult Index()
         {
             
-            Game game = db.Games.Find(id);
+            Game game = db.Games.Find(staticID);
             return View(game);
            
         }
         
        public ActionResult Next()
         {
-            id += id;
-            Game game = db.Games.Find(id);
-            return View(game);
+            Game game = db.Games.Find(staticID+1);
+           if (game != null)
+           {
+               staticID += 1;
+               game = db.Games.Find(staticID);
+               IDHolder.ID = staticID;
+           }
+           else
+               game = db.Games.Find(staticID);
+           return View(game);
         }
 
         
