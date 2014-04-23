@@ -1,9 +1,7 @@
 ﻿@model GameRating.Models.Game
 @{
     ViewBag.Title = "Home Page";
-
 }
-
 
 
 <div class="jumbotron">
@@ -12,18 +10,20 @@
 </div>
 
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Video Game Rating!</title>
+    @Scripts.Render("~/bundles/jquery");
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Google AJAX Search API Sample</title>
-    <script src="//www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
-    <script type="text/javascript">
-        /*
-        *  How to draw results in tabbed mode.
-        */
 
+    <script src="https://www.google.com/jsapi"
+            type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+        //<!
         google.load('search', '1');
+
 
         function OnLoad() {
 
@@ -31,10 +31,10 @@
             var gameName = document.getElementById("gameName").innerText.toString();
             var tabbed = new google.search.SearchControl();
             tabbed.setResultSetSize(1);
-            
+
             // create our searchers.  There will now be 3 tabs.
             tabbed.addSearcher(new google.search.ImageSearch());
-            
+
             tabbed.addSearcher(new google.search.VideoSearch());
 
             // draw in tabbed layout mode
@@ -42,28 +42,22 @@
             drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
 
 
-
             // Draw the tabbed view in the content div
             tabbed.draw(document.getElementById("content"), drawOptions);
 
-
-        
-            
-
-
             // Search!
             tabbed.execute(gameName);
+
+            // tell the searcher to draw itself and tell it where to attach
+            
+
         }
         google.setOnLoadCallback(OnLoad);
     </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
     <div id="content">Loading...</div>
-
-   
-    <h2>Details</h2>
-
-    <div>
+    <div class="GameDetails">
         <h4>Game</h4>
         <hr />
         <dl class="dl-horizontal">
@@ -91,13 +85,43 @@
                 @Html.DisplayFor(model => model.Rating)
             </dd>
             <dd>
-                <input type="button" value="Next" onclick="location.href='@Url.Action("Next", "Home")'" />
-                <input type="button" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'" />
-                <input type="button" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'" />
+                <input type="button" id="NextButton" value="Next" onclick="location.href='@Url.Action("Next", "Home")'" />
+                <input type="button" id="UpvoteButton" name="command" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'" />
+                <input type="button" id="DownvoteButton" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'" />
             </dd>
 
         </dl>
-
     </div>
+    <script>
+        $("#NextButton").hover(function () {
+            $("#NextButton").fadeToggle(100);
+            $(this).css('background-color', 'yellow');
+            $("#NextButton").fadeToggle(100);
+        }, function () {
+            $(this).css('background-color', 'white');
+            $("#NextButton").fadeIn();
+        });
+    </script>
+    <script>
+        $("#UpvoteButton").hover(function () {
+            $(this).fadeToggle(100);
+            $(this).css('background-color', 'aqua');
+            $(this).fadeToggle(100);
+        }, function () {
+            $(this).css('background-color', 'white');
+            $(this).fadeIn();
+        });
+    </script>
+    <script>
+        $("#DownvoteButton").hover(function () {
+            $(this).fadeToggle(100);
+            $(this).css('background-color', 'red');
+            $(this).fadeToggle(100);
+        }, function () {
+            $(this).css('background-color', 'white');
+            $(this).fadeIn();
+        });
+    </script>
+  
 </body>
 </html>
