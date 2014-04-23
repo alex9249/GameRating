@@ -38,7 +38,7 @@ namespace GameRating.Controllers
 
         public ActionResult Upvote()
        {
-           
+
            Game game = db.Games.Find(staticID);
            game.Rating++;
            game = db.Games.Find(staticID + 1);
@@ -50,7 +50,7 @@ namespace GameRating.Controllers
            }
            else
                game = db.Games.Find(staticID);
-           
+
            db.SaveChanges();
            return View(game);
        }
