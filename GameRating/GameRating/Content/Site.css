@@ -62,3 +62,6 @@ input[type="checkbox"].input-validation-error {
 .gs-visibleUrl {
     visibility: hidden;
 }
+.gsc-configLabel {
+    visibility: hidden;
+}
