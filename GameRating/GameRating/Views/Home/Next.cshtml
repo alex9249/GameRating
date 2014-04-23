@@ -3,7 +3,11 @@
     ViewBag.Title = "Home Page";
 }
 
-
+@{
+    string name = Model.Name;
+    string system = Model.System;
+    int rating = Model.Rating;
+}
 <div class="jumbotron">
     <h1>Games</h1>
 
@@ -46,10 +50,10 @@
             tabbed.draw(document.getElementById("content"), drawOptions);
 
             // Search!
-            tabbed.execute(gameName);
+            tabbed.execute(gameName + " " + "box art");
 
             // tell the searcher to draw itself and tell it where to attach
-            
+
 
         }
         google.setOnLoadCallback(OnLoad);
@@ -57,38 +61,23 @@
 </head>
 <body style="font-family: Arial;border: 0 none;">
     <div id="content">Loading...</div>
-    <div>
-        <h4>Game</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
+    <div class="GameDetails">
+        <h4>@name</h4>
 
-            <dd>
-                <label id="gameName">@Html.DisplayFor(model => model.Name)</label>
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.System)
-            </dt>
+        <label id="gameName">Game Title: @name</label><br />
 
-            <dd>
-                @Html.DisplayFor(model => model.System)
-            </dd>
+        <label>Platform: @system</label><br />
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Rating)
-            </dt>
+        <label>Current Rating: @rating</label><br />
 
-            <dd>
-                @Html.DisplayFor(model => model.Rating)
-            </dd>
-            <dd>
-                <input type="button" id="NextButton" value="Next" onclick="location.href='@Url.Action("Next", "Home")'" />
-                <input type="button" id="UpvoteButton" name="command" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'" />
-                <input type="button" id="DownvoteButton" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'" />
-            </dd>
+
+
+
+        <input type="button" id="NextButton" value="Next" onclick="location.href='@Url.Action("Next", "Home")'" />
+        <input type="button" id="UpvoteButton" name="command" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'" />
+        <input type="button" id="DownvoteButton" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'" />
+
 
         </dl>
     </div>
@@ -122,5 +111,6 @@
             $(this).fadeIn();
         });
     </script>
+
 </body>
 </html>
