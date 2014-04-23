@@ -43,7 +43,7 @@
 
             // tell the searcher to draw itself and tell it where to attach
             searchControl.draw(document.getElementById("searchcontrol"));
-
+            searchControl.setResultSetSize(1);
             // execute an inital search
             searchControl.execute(gameName);
         }
