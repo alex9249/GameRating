@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+    
 
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" id="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
