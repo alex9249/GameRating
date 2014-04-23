@@ -65,3 +65,8 @@ input[type="checkbox"].input-validation-error {
 .gsc-configLabel {
     visibility: hidden;
 }
+.content{
+    float:left;
+    
+    
+}

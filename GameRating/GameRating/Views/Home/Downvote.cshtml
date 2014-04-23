@@ -60,8 +60,8 @@
     </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
-    <div id="content">Loading...</div>
-    <div class="GameDetails">
+    <div id="content" class="col-lg-6">Loading...</div>
+    <div class="GameDetails col-lg-6">
         <h4>@name</h4>
 
 
@@ -74,12 +74,20 @@
 
 
 
-        <input type="button" id="NextButton" value="Next" onclick="location.href='@Url.Action("Next", "Home")'" />
-        <input type="button" id="UpvoteButton" name="command" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'" />
-        <input type="button" id="DownvoteButton" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'" />
 
 
-        </dl>
+        <button type="button" class="btn btn-default" id="NextButton" onclick="location.href='@Url.Action("Next", "Home")'">
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+
+        <button type="button" class="btn btn-default" id="UpvoteButton" name="command" value="Upvote" onclick="location.href='@Url.Action("Upvote", "Home")'">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+        </button>
+
+        <button type="button" class="btn btn-default" id="DownvoteButton" value="Downvote" onclick="location.href='@Url.Action("Downvote", "Home")'">
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+        </button>
+
     </div>
     <script>
         $("#NextButton").hover(function () {
@@ -87,17 +95,17 @@
             $(this).css('background-color', 'yellow');
             $("#NextButton").fadeToggle(100);
         }, function () {
-            $(this).css('background-color', 'white');
+            $(this).css('background-color', 'yellow');
             $("#NextButton").fadeIn();
         });
     </script>
     <script>
         $("#UpvoteButton").hover(function () {
             $(this).fadeToggle(100);
-            $(this).css('background-color', 'aqua');
+            $(this).css('background-color', 'green');
             $(this).fadeToggle(100);
         }, function () {
-            $(this).css('background-color', 'white');
+            $(this).css('background-color', 'green');
             $(this).fadeIn();
         });
     </script>
@@ -107,7 +115,7 @@
             $(this).css('background-color', 'red');
             $(this).fadeToggle(100);
         }, function () {
-            $(this).css('background-color', 'white');
+            $(this).css('background-color', 'red');
             $(this).fadeIn();
         });
     </script>

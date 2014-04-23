@@ -3,40 +3,90 @@
 @{
     ViewBag.Title = "Details";
 }
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Video Game Rating!</title>
+    @Scripts.Render("~/bundles/jquery");
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-<h2>Details</h2>
+    <script src="https://www.google.com/jsapi"
+            type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+        //<!
+        google.load('search', '1');
 
-<div>
-    <h4>Game</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        function OnLoad() {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.System)
-        </dt>
+            // create a tabbed mode search control
+            var gameName = document.getElementById("gameName").innerText.toString();
+            var tabbed = new google.search.SearchControl();
+            tabbed.setResultSetSize(1);
 
-        <dd>
-            @Html.DisplayFor(model => model.System)
-        </dd>
+            // create our searchers.  There will now be 3 tabs.
+            tabbed.addSearcher(new google.search.ImageSearch());
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
+            tabbed.addSearcher(new google.search.VideoSearch());
 
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
+            // draw in tabbed layout mode
+            var drawOptions = new google.search.DrawOptions();
+            drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+            // Draw the tabbed view in the content div
+            tabbed.draw(document.getElementById("content"), drawOptions);
+
+            // Search!
+            tabbed.execute(gameName + " " + "box art");
+
+            // tell the searcher to draw itself and tell it where to attach
+
+
+        }
+        google.setOnLoadCallback(OnLoad);
+    </script>
+</head>
+<body style="font-family: Arial;border: 0 none;">
+    <div id="content" class="col-lg-6">Loading...</div>
+    <div class="GameDetails col-lg-6">
+        <h2>Details</h2>
+
+        <div>
+            <h4>Game</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd id="gameName">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.System)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.System)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Rating)
+                </dd>
+
+            </dl>
+        </div>
+
+        <p>
+
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div></body>
+</html>
