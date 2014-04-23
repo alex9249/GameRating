@@ -5,6 +5,7 @@
 }
 
 
+
 <div class="jumbotron">
     <h1>Games</h1>
     
@@ -16,14 +17,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
     <script src="https://www.google.com/jsapi"
             type="text/javascript"></script>
     <script language="Javascript" type="text/javascript">
         //<!
         google.load('search', '1');
+       
 
         function OnLoad() {
             // Create a search control
+            var gameName = document.getElementById("gameName").innerText.toString();
             var searchControl = new google.search.SearchControl();
 
             // Add in a full set of searchers
@@ -31,6 +35,7 @@
            
             searchControl.addSearcher(new google.search.VideoSearch());
            
+
             
             searchControl.addSearcher(new google.search.ImageSearch());
             
@@ -42,7 +47,7 @@
             searchControl.draw(document.getElementById("searchcontrol"));
 
             // execute an inital search
-            searchControl.execute();
+            searchControl.execute(gameName);
         }
         google.setOnLoadCallback(OnLoad);
 
@@ -53,7 +58,7 @@
 <body>
     <div id="searchcontrol">Loading</div>
 
-
+    
 <h2>Details</h2>
 
 <div>
@@ -64,8 +69,8 @@
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
+        <dd >
+           <label id="gameName">@Html.DisplayFor(model => model.Name)</label>
         </dd>
 
         <dt>
