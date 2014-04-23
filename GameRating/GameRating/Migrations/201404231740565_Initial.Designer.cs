@@ -13,7 +13,7 @@ namespace GameRating.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201404212156120_Initial"; }
+            get { return "201404231740565_Initial"; }
         }
         
         string IMigrationMetadata.Source

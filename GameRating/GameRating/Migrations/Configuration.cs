@@ -16,20 +16,20 @@ namespace GameRating.Migrations
         protected override void Seed(GameRating.Models.GameDBContext context)
         {
             context.Games.AddOrUpdate(i => i.Name,
-            new Game
-            {
-                Name = "Fallout 3",
-                System = "PS3",
-                Rating = 5
-            },
+                new Game
+                {
+                    Name = "Super Mario",
+                    System = "Nintendo 64",
+                    Rating = 10
+                },
 
-            new Game
-            {
-                Name = "Fallout: New Vegas ",
-                System = "PS3",
-                Rating = 3
-            }
-            );
+                new Game
+                {
+                Name = "Goat Simulator",
+                System = "PC",
+                Rating = 9000
+                }
+                );
         }
     }
 }
