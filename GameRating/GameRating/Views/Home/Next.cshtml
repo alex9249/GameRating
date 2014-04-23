@@ -22,41 +22,42 @@
         //<!
         google.load('search', '1');
 
-
         function OnLoad() {
-            // Create a search control
+
+            // create a tabbed mode search control
             var gameName = document.getElementById("gameName").innerText.toString();
-            var searchControl = new google.search.SearchControl();
+            var tabbed = new google.search.SearchControl();
+            tabbed.setResultSetSize(1);
 
-            // Add in a full set of searchers
+            // create our searchers.  There will now be 3 tabs.
+            tabbed.addSearcher(new google.search.ImageSearch());
+            
+            tabbed.addSearcher(new google.search.VideoSearch());
+
+            // draw in tabbed layout mode
+            var drawOptions = new google.search.DrawOptions();
+            drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
 
 
-            searchControl.addSearcher(new google.search.VideoSearch());
+            // Draw the tabbed view in the content div
+            tabbed.draw(document.getElementById("content"), drawOptions);
 
-
-
-            searchControl.addSearcher(new google.search.ImageSearch());
-
-
-
-
+            // Search!
+            tabbed.execute(gameName);
 
             // tell the searcher to draw itself and tell it where to attach
             searchControl.draw(document.getElementById("searchcontrol"));
-
+            searchControl.setResultSetSize(1);
             // execute an inital search
             searchControl.execute(gameName);
+
         }
         google.setOnLoadCallback(OnLoad);
-
-        //]]>
-    </script>
-    
-    <title>Rate the Game</title>
+        </script>
     </head>
-    <body>
-        <div id="searchcontrol">Loading</div>
-        <div>
+    <body style="font-family: Arial;border: 0 none;">
+        <div id="content">Loading...</div>
+<div>
             <h4>Game</h4>
             <hr />
             <dl class="dl-horizontal">
