@@ -42,8 +42,14 @@
             drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
 
 
+<<<<<<< HEAD
             // Draw the tabbed view in the content div
             tabbed.draw(document.getElementById("content"), drawOptions);
+=======
+            // tell the searcher to draw itself and tell it where to attach
+            searchControl.draw(document.getElementById("searchcontrol"));
+            searchControl.setResultSetSize(1);
+>>>>>>> 2ec25d144d2794a149d03b8376575ff52113329a
 
         
             
