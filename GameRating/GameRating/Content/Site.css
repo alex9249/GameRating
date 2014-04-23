@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -39,4 +40,25 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+.gsc-input{
+    visibility:hidden;
+}
+.gsc-cursor{
+    visibility:hidden;
+}
+.gsc-result-info{
+    visibility:hidden;
+}
+.gsc-search-button{
+    visibility:hidden;
+}
+.gsc-clear-button{
+    visibility:hidden;
+}
+.gs-size{
+    visibility:hidden;
+}
+.gs-visibleUrl {
+    visibility: hidden;
 }
